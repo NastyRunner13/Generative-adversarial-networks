@@ -8,6 +8,8 @@ archive.zip
 disc.pth.tar
 gen.pth.tar
 celeb_dataset
+saved_images
+
 .vscode
 
 # Byte-compiled / optimized / DLL files
