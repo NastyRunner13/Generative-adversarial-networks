@@ -1,3 +1,7 @@
+Below is the updated README file including both ESRGAN and SRGAN implementations:
+
+---
+
 # Generative Adversarial Networks (GANs) with PyTorch
 
 Welcome to the repository where I implement various types of Generative Adversarial Networks (GANs) inspired by research papers using PyTorch. This repository serves as a practical resource for learning and experimenting with state-of-the-art GAN architectures.
@@ -26,25 +30,29 @@ The goal is to provide an educational platform for understanding and experimenti
 ## Implemented GANs
 Here are the GAN variants currently implemented in the repository:
 
-1. **Vanilla GAN**
-   - Based on the original GAN paper by Goodfellow et al.
-   - Implements a simple architecture for learning from a dataset of images.
-
-2. **Deep Convolutional GAN (DCGAN)**
-   - Paper: "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks."
+1. **Deep Convolutional GAN (DCGAN)**
+   - Paper: *"Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"*
    - Features a convolutional architecture for high-quality image generation.
 
-3. **Conditional GAN (cGAN)**
-   - Paper: "Conditional Generative Adversarial Nets."
+2. **Conditional GAN (cGAN)**
+   - Paper: *"Conditional Generative Adversarial Nets"*
    - Adds conditional inputs to guide the generation process.
 
-4. **Wasserstein GAN (WGAN)**
-   - Paper: "Wasserstein GAN."
+3. **Wasserstein GAN (WGAN)**
+   - Paper: *"Wasserstein GAN"*
    - Introduces the Wasserstein distance to improve GAN training stability.
 
-5. **CycleGAN**
-   - Paper: "Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks."
-   - Focuses on image-to-image translation tasks.
+4. **CycleGAN**
+   - Paper: *"Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks"*
+   - Focuses on image-to-image translation tasks without paired training examples.
+
+5. **SRGAN (Super-Resolution GAN)**
+   - Paper: *"Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network"*
+   - Designed for image super-resolution, combining perceptual and adversarial loss to generate high-quality HR images from LR inputs.
+
+6. **ESRGAN (Enhanced SRGAN)**
+   - Paper: *"ESRGAN: Enhanced Super-Resolution Generative Adversarial Networks"*
+   - Builds upon SRGAN to further improve perceptual quality and fidelity through Residual-in-Residual Dense Blocks (RRDB).
 
 More implementations will be added in the future. Check the repository regularly for updates!
 
@@ -80,17 +88,28 @@ More implementations will be added in the future. Check the repository regularly
 ## Usage
 
 ### Training a GAN
-1. Navigate to the specific GAN directory (e.g., `vanilla_gan/`):
+1. Navigate to the specific GAN directory (e.g., `SRGAN/` or `ESRGAN/`):
    ```bash
-   cd vanilla_gan
+   cd SRGAN
    ```
-
+   
 2. Run the training script:
    ```bash
    python train.py
    ```
 
 3. Model checkpoints and generated outputs will be saved in the `outputs/` directory.
+
+### Super-Resolution GANs (SRGAN & ESRGAN)
+- **Data Preparation:**
+  - For SRGAN and ESRGAN, prepare paired low-resolution (LR) and high-resolution (HR) images.
+  - Place your training data in the `data/` directory or as specified in the `config.py` file for each GAN.
+
+- **Training:**
+  - Running `train.py` will load the dataset, train the Generator and Discriminator, and periodically save model checkpoints.
+  
+- **Evaluation and Testing:**
+  - After training, use the provided test scripts or load the saved generator checkpoint to run inference on LR images and produce HR outputs.
 
 ### Experimenting with Hyperparameters
 Modify the `config.py` file in each GAN folder to customize parameters such as learning rate, batch size, or model architecture.
@@ -116,16 +135,25 @@ Contributions are welcome! If you'd like to add a new GAN variant or improve the
 ## References
 This repository is inspired by the following research papers:
 
-1. **Generative Adversarial Networks** (Goodfellow et al.)
+1. **Generative Adversarial Networks (Goodfellow et al.)**  
    [Paper](https://arxiv.org/abs/1406.2661)
-2. **Unsupervised Representation Learning with Deep Convolutional GANs**
+   
+2. **Unsupervised Representation Learning with DCGANs**  
    [Paper](https://arxiv.org/abs/1511.06434)
-3. **Conditional GANs**
+   
+3. **Conditional GANs**  
    [Paper](https://arxiv.org/abs/1411.1784)
-4. **Wasserstein GAN**
+   
+4. **Wasserstein GAN**  
    [Paper](https://arxiv.org/abs/1701.07875)
-5. **CycleGAN**
+   
+5. **CycleGAN**  
    [Paper](https://arxiv.org/abs/1703.10593)
-
+   
+6. **SRGAN**: Photo-Realistic Single Image Super-Resolution  
+   [Paper](https://arxiv.org/abs/1609.04802)
+   
+7. **ESRGAN**: Enhanced Super-Resolution GANs  
+   [Paper](https://arxiv.org/abs/1809.00219)
 
 Feel free to explore, experiment, and learn!
