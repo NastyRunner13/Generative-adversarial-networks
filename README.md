@@ -1,7 +1,3 @@
-Below is the updated README file including both ESRGAN and SRGAN implementations:
-
----
-
 # Generative Adversarial Networks (GANs) with PyTorch
 
 Welcome to the repository where I implement various types of Generative Adversarial Networks (GANs) inspired by research papers using PyTorch. This repository serves as a practical resource for learning and experimenting with state-of-the-art GAN architectures.
