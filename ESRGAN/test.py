@@ -1,6 +1,17 @@
 import torch
+from torch import nn
 from generator import Generator
 from discriminator import Discriminator
+
+def initialize_weights(model, scale=0.1):
+    for m in model.modules():
+        if isinstance(m, nn.Conv2d):
+            nn.init.kaiming_normal_(m.weight.data)
+            m.weight.data *= scale
+
+        elif isinstance(m, nn.Linear):
+            nn.init.kaiming_normal_(m.weight.data)
+            m.weight.data *= scale
 
 def test():
     gen = Generator()
