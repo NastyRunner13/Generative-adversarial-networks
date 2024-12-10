@@ -15,9 +15,9 @@ class ConvBlock(nn.Module):
         return self.act(self.cnn(x))
     
 class UpsampleBlock(nn.Module):
-    def __init__(self, in_channels, scale_factor):
+    def __init__(self, in_channels, scale_factor=2):
         super().__init__()
-        self.upsample = nn.Upsample(scale_factor, mode="nearest")
+        self.upsample = nn.Upsample(scale_factor=scale_factor, mode="nearest")
         self.conv = nn.Conv2d(
             in_channels,
             in_channels,
@@ -49,7 +49,7 @@ class DenseResidualBlock(nn.Module):
         new_inputs = x
         for block in self.blocks:
             out = block(new_inputs)
-            new_input = torch.cat([new_inputs, out], dim=1)
+            new_inputs = torch.cat([new_inputs, out], dim=1)
         
         return self.residual_beta * out + x
     
@@ -62,7 +62,7 @@ class RRDB(nn.Module):
         )
 
     def forward(self, x):
-        return self.rrdb(x) + self.residual_beta + x
+        return x + self.residual_beta * self.rrdb(x)
     
 
 class Generator(nn.Module):
